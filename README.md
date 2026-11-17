@@ -99,6 +99,8 @@ The forecasting models will be evaluated using historical sales data and a suita
 
 ## V1 Architecture
 
+<img width="3600" height="3045" alt="week3_pipeline_diagram png" src="https://github.com/user-attachments/assets/f62ec87e-05fe-491f-923e-27929d9836c4" />
+
 The V1 architecture will show the main data processing and forecasting workflow:
 
 **Sales Data → Data Ingestion → Data Inspection → Data Preparation → Data Validation → Prepared Monthly Sales Data → Forecasting Model → Forecast Results**
