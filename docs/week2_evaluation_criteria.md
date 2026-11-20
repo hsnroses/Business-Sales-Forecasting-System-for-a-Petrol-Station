@@ -1,92 +1,248 @@
-# Week 2: Evaluation Criteria — AI Business Decision Support System
+# Week 2: Evaluation Criteria
 
-## 1. Purpose
+## Business Sales Forecasting System for a Petrol Station
 
-The purpose of this evaluation is to determine whether the AI Business Decision Support System can analyse sales data correctly, produce useful revenue forecasts, and explain business results clearly.
+## 1. Evaluation Overview
 
-The evaluation criteria are linked to the project objectives and requirements. The thresholds below are initial targets and will be reviewed after the dataset and system capabilities are confirmed.
+This document defines how the Business Sales Forecasting System for a Petrol Station will be evaluated.
 
-## 2. Evaluation Criteria Table
+The evaluation criteria are mapped to the project objectives, functional requirements (FR), non-functional requirements (NFR), and Responsible AI requirements (RAI).
 
-| Requirement ID / Objective | Evaluation Criterion | Capability Bucket | Measurement Method | Metric | Initial Threshold | Expected User / Business Outcome |
-|---|---|---|---|---|---|---|
-| FR3 / O1 | Correctness of sales calculations | Domain-specific capability | Compare system-generated sales totals and key indicators against independently calculated results from a test dataset. | Calculation correctness rate | 100% for predefined test cases with valid input data | Users can trust the reported sales totals and indicators. |
-| FR4 / O2 | Revenue forecasting performance | Domain-specific capability | Evaluate forecasts on a held-out historical test period and compare them with a simple baseline, such as the previous period's sales value. | Mean Absolute Error (MAE) and percentage improvement over baseline MAE | Target at least 5% lower MAE than the baseline, if the data supports meaningful forecasting | Users receive forecasts that provide measurable value beyond a simple baseline. |
-| FR5 / O3 | Accuracy and evidence support of AI-generated explanations | Generation capability | Prepare test questions about known sales trends and compare generated explanations with independently verified calculations and source data. | Evidence-supported claim rate | At least 95% of factual claims are supported by the available evidence | Users can understand sales changes without being misled by unsupported explanations. |
-| FR2 / O1 | Handling of missing or invalid sales records | Domain-specific capability | Test the system with records containing missing dates, invalid sales values, duplicates, and inconsistent formats. | Correct validation and handling rate | 100% of predefined invalid-data test cases are handled according to the documented validation rules | Users are informed about data quality issues before relying on the analysis. |
-| RAI1 / O3 | Protection of confidential business data | Instruction-following capability | Review access-control behaviour and inspect data flows to check that unauthorised users cannot access restricted sales records. | Successful access-control test rate; number of unauthorised disclosures | 100% of predefined access-control tests pass; zero unauthorised disclosures in testing | The business can use its sales information with appropriate confidentiality controls. |
-| NFR1 / O3 | Response time for common dashboard operations | Cost and latency | Measure the time required to load sales summaries and return answers for a defined set of representative test queries. | 95th-percentile response time (P95) | At most 3 seconds for common sales summaries and analysis queries, excluding long-running forecasting jobs | Users can explore business performance without excessive waiting. |
+The main purpose is to ensure that the system can analyse historical sales records, generate monthly sales forecasts, present forecasting results clearly, and handle business data responsibly.
 
-## 3. Evaluation Details
+## 2. Evaluation Criteria Mapping
 
-### EC1: Sales Calculation Correctness
+| Objective / Requirement | Evaluation Criteria | Architecture Component | Evidence of Implementation |
+|---|---|---|---|
+| O1 / FR1: Analyse historical sales records and identify sales trends and patterns. | EC1: Sales calculation and analysis correctness. | Data Input, Data Validation, and Sales Analysis | Test results show that sales totals, quantities, and selected indicators match independently calculated expected values. |
+| O2 / FR2: Develop and evaluate monthly sales forecasting models. | EC2: Forecasting performance compared with a simple baseline. | Data Preparation, Forecasting Component, and Evaluation Process | Evaluation results report MAE, RMSE, and applicable MAPE values using held-out historical data, together with baseline comparisons. |
+| O3 / FR3: Present historical sales analysis and forecasting results clearly. | EC3: Result presentation correctness and clarity. | Analysis and Forecasting Results Dashboard | Test results confirm that displayed historical values, forecast values, sales categories, and time periods match the generated results. |
+| NFR1: Ensure measurable forecasting accuracy. | EC2: Forecasting performance. | Forecasting Component and Evaluation Process | Forecasting errors and baseline comparisons are recorded and reported. |
+| NFR2: Maintain data quality before analysis and forecasting. | EC4: Data validation effectiveness. | Data Input and Data Validation | Validation tests identify missing dates, invalid sales values, duplicate records, and inconsistent formats where applicable. |
+| NFR3: Provide a clear and usable system interface. | EC5: System usability. | User Interface and Dashboard | Usability testing records task completion rates and user feedback. |
+| RAI1: Protect confidential business sales data. | EC6: Data privacy and access protection. | Data Storage and Access Controls | Evidence shows that confidential data is protected and access or sharing follows the defined permissions. |
+| RAI2: Maintain data provenance and processing traceability. | EC7: Data provenance and traceability. | Data Processing Pipeline and Data Manifest | Source information, processing records, dataset versions, and output information are documented. |
+| RAI3: Communicate forecasting limitations clearly. | EC8: Forecast transparency. | Forecasting Results and Reporting Component | Forecast displays and reports identify predictions as estimates and communicate relevant errors and limitations. |
 
-The system will be tested using a small dataset with known sales values. Expected totals and indicators will be calculated independently and compared with the system's results.
+## 3. Detailed Evaluation Methods
 
-**Metric:**
+### EC1: Sales Calculation and Analysis Correctness
 
-Calculation correctness rate = Number of correct predefined calculations / Total predefined calculations × 100%
+**Related requirements:** O1 and FR1
 
-**Target:** 100% of predefined calculations must match the expected results, allowing only documented rounding differences.
+**Purpose:** To verify that the system correctly analyses historical sales records.
 
-### EC2: Revenue Forecasting Performance
+**Evaluation method:**
+1. Select representative historical sales records.
+2. Calculate expected sales totals and selected indicators independently.
+3. Compare the independently calculated values with the system outputs.
+4. Investigate any differences.
 
-The dataset will be divided chronologically into training and test periods to avoid using future information when building forecasts. The forecasting approach will be compared against a simple baseline on the same test period.
+**Metric:** Calculation correctness rate.
 
-**Metric 1 — Mean Absolute Error (MAE):**
+**Initial threshold:** 100% of predefined valid-data calculation test cases, allowing documented rounding differences.
 
-MAE measures the average absolute difference between actual and predicted sales values.
+**Evidence:**
+- Sample input records.
+- Independently calculated expected values.
+- System-generated results.
+- Comparison and test results.
 
-**Metric 2 — Improvement over baseline:**
+### EC2: Forecasting Performance
 
-Improvement (%) = (Baseline MAE − Model MAE) / Baseline MAE × 100%
+**Related requirements:** O2, FR2 and NFR1
 
-**Target:** Aim for at least 5% lower MAE than the baseline. If the baseline MAE is zero, percentage improvement will not be used. If the dataset is insufficient or the forecasting approach does not outperform the baseline, the limitation will be documented rather than claiming that the forecast is better.
+**Purpose:** To evaluate how accurately the forecasting model predicts future monthly sales revenue.
 
-### EC3: Explanation Quality and Evidence Support
+**Evaluation method:**
+1. Prepare suitable historical sales data and aggregate it into monthly observations.
+2. Divide the data into training and testing periods based on time order.
+3. Train suitable forecasting models using the training data.
+4. Generate predictions for the held-out testing period.
+5. Compare predictions against actual sales values.
+6. Compare model performance against a simple forecasting baseline.
 
-A set of test questions will be prepared using known sales results. Each factual claim in the generated explanations will be checked against the calculated indicators or available sales records.
+**Metrics:**
 
-**Metric:**
+- **MAE (Mean Absolute Error):** Measures the average absolute difference between actual and predicted sales values.
+- **RMSE (Root Mean Squared Error):** Measures forecasting errors while giving greater weight to larger errors.
+- **MAPE (Mean Absolute Percentage Error):** Measures forecasting errors as percentages when actual values are suitable for percentage-based calculation.
 
-Evidence-supported claim rate = Number of factual claims supported by evidence / Total factual claims evaluated × 100%
+**Initial threshold:** Aim for at least 5% lower MAE than the baseline where meaningful and feasible. All applicable evaluation metrics and baseline results must be reported.
 
-**Target:** At least 95% of factual claims must be supported by the available evidence. Important numerical claims must match the underlying calculations.
+**Evidence:**
+- Training and testing data periods.
+- Actual and predicted monthly sales.
+- MAE, RMSE, and applicable MAPE results.
+- Baseline forecasting results.
+- Forecast comparison charts.
 
-### EC4: Data Validation
+**Important:** Random train-test splitting should be avoided for time-series forecasting because it can introduce information from future periods into model training. The testing period must remain separate from the training period.
 
-Test records will be created to represent common data-quality issues, including missing dates, invalid numerical values, duplicate records, and inconsistent formats.
+### EC3: Result Presentation Correctness and Clarity
 
-**Metric:** Percentage of predefined invalid-data test cases handled according to the validation rules.
+**Related requirements:** O3 and FR3
 
-**Target:** 100% of the predefined test cases must be handled correctly. This does not mean that every real-world data issue will automatically be detected.
+**Purpose:** To ensure that historical sales analysis and forecasting results are presented correctly and understandably.
 
-### EC5: Confidentiality and Access Control
+**Evaluation method:**
+1. Check the displayed historical sales values against the analysis results.
+2. Check that forecast values match the forecasting model outputs.
+3. Verify that charts and tables display the correct sales categories and time periods.
+4. Review whether the displayed information is understandable to intended users.
 
-Testing will check whether access restrictions work as intended and whether confidential sales records are exposed to unauthorised users or destinations.
+**Metric:** Correct result presentation rate.
 
-**Metric:** Access-control test pass rate and number of unauthorised disclosures observed during testing.
+**Initial threshold:** 100% of predefined result-presentation test cases.
 
-**Target:** All predefined access-control tests must pass, with zero unauthorised disclosures observed during testing.
+**Evidence:**
+- Dashboard screenshots.
+- Historical sales charts.
+- Forecast visualisations.
+- Comparison between displayed values and generated results.
 
-### EC6: Response Time
+### EC4: Data Validation Effectiveness
 
-Response times will be measured using representative sales-analysis queries and dashboard operations under a documented test environment.
+**Related requirement:** NFR2
 
-**Metric:** 95th-percentile response time (P95), which indicates the time within which 95% of measured requests complete.
+**Purpose:** To ensure that historical sales data is checked before being used for analysis and forecasting.
 
-**Target:** P95 of no more than 3 seconds for common summaries and analysis queries. Forecasting jobs will be measured separately because their processing time may be different.
+**Evaluation method:**
+1. Inspect the available historical sales datasets.
+2. Check for missing dates and sales values.
+3. Identify invalid or negative sales values where they are not valid.
+4. Check for duplicate records based on appropriate business keys.
+5. Identify inconsistent date, category, or numerical formats.
+6. Record how identified issues are handled.
 
-## 4. Evaluation Limitations
+**Metric:** Data validation correctness rate.
 
-The evaluation depends on the quality, completeness, and duration of the available sales records. Forecasting may not be meaningful if the dataset contains insufficient historical observations or inconsistent time periods.
+**Initial threshold:** 100% of predefined data-quality test cases must be handled according to documented validation rules.
 
-The proposed thresholds are initial engineering targets, not achieved results. They may be revised after inspecting the dataset, defining the test cases, and measuring the performance of the initial system.
+**Evidence:**
+- Data inventory.
+- Missing-value summaries.
+- Duplicate-record checks.
+- Validation results.
+- Data cleaning and preparation records.
 
-Revenue forecasts will be evaluated as estimates of sales revenue, not profit. Profit analysis requires reliable cost and expense information.
+### EC5: System Usability
 
-## 5. Reflection
+**Related requirement:** NFR3
 
-The most important evaluation criterion is revenue forecasting performance compared with a simple baseline. This is important because one of the main goals of the system is to help the business estimate future sales and plan its activities.
+**Purpose:** To determine whether intended users can understand and use the system to review historical sales and forecasting results.
 
+**Evaluation method:**
+1. Ask representative users to perform predefined tasks.
+2. Observe whether users can locate historical sales information.
+3. Ask users to view monthly sales trends and forecasting results.
+4. Record successful task completion and feedback.
+
+**Metric:** Task completion rate.
+
+**Initial threshold:** At least 80% of predefined tasks completed successfully by participating users.
+
+**Evidence:**
+- Usability test scenarios.
+- Task completion records.
+- User feedback.
+- Screenshots of the interface.
+
+### EC6: Data Privacy and Access Protection
+
+**Related requirement:** RAI1
+
+**Purpose:** To protect confidential business sales information from unauthorised access or disclosure.
+
+**Evaluation method:**
+1. Review the permissions for accessing the original sales dataset.
+2. Check whether confidential raw data is exposed in the public GitHub repository.
+3. Review data storage and sharing practices.
+4. Confirm that only authorised data is used and shared.
+
+**Metric:** Privacy and access-control checklist pass rate.
+
+**Initial threshold:** All defined privacy safeguards must be implemented and verified before confidential data is shared or deployed.
+
+**Evidence:**
+- Data access and permission records.
+- Repository inspection.
+- Data protection checklist.
+- Evidence of restricted access where applicable.
+
+### EC7: Data Provenance and Traceability
+
+**Related requirement:** RAI2
+
+**Purpose:** To maintain information about where the sales data originated and how it was processed.
+
+**Evaluation method:**
+1. Identify the original data source.
+2. Record the source file and relevant worksheet information.
+3. Document the data preparation and transformation steps.
+4. Record the processed dataset filenames and versions.
+5. Maintain relevant processing manifests and data lineage information.
+
+**Metric:** Provenance documentation completeness rate.
+
+**Initial threshold:** 100% of required provenance fields documented for datasets used in the final evaluation.
+
+**Evidence:**
+- Data inventory.
+- Source information.
+- Processing pipeline documentation.
+- Dataset manifests.
+- Prepared dataset records.
+
+### EC8: Forecast Transparency
+
+**Related requirement:** RAI3
+
+**Purpose:** To ensure users understand that forecasting results are estimates and may contain errors.
+
+**Evaluation method:**
+1. Review the forecast charts and result summaries.
+2. Check whether forecasts are clearly labelled as predicted values.
+3. Verify that forecasting errors are reported.
+4. Check whether limitations related to historical data coverage and unexpected business changes are communicated.
+
+**Metric:** Forecast transparency checklist pass rate.
+
+**Initial threshold:** All predefined forecast-transparency checks must pass.
+
+**Evidence:**
+- Forecast result screenshots.
+- Forecast evaluation metrics.
+- Documented model limitations.
+- Forecast reporting descriptions.
+
+## 4. Overall Evaluation Summary
+
+| Evaluation Criteria | Related Requirements | Main Evaluation Evidence |
+|---|---|---|
+| EC1: Sales Calculation and Analysis Correctness | O1 / FR1 | Independent calculation comparisons |
+| EC2: Forecasting Performance | O2 / FR2 / NFR1 | MAE, RMSE, MAPE and baseline comparison |
+| EC3: Result Presentation Correctness and Clarity | O3 / FR3 | Dashboard and result verification |
+| EC4: Data Validation Effectiveness | NFR2 | Data-quality checks and validation results |
+| EC5: System Usability | NFR3 | Usability testing and task completion records |
+| EC6: Data Privacy and Access Protection | RAI1 | Privacy and access-control evidence |
+| EC7: Data Provenance and Traceability | RAI2 | Data manifests and processing records |
+| EC8: Forecast Transparency | RAI3 | Forecast labels, errors and limitations |
+
+## 5. Evaluation Considerations
+
+The evaluation will be conducted using the actual available sales dataset and implemented system.
+
+The following considerations will be applied:
+
+1. Forecasting methods will be selected based on the available data and its time coverage.
+2. A time-based training and testing approach will be used to prevent data leakage.
+3. Forecasting results will be compared against a simple baseline.
+4. Missing, duplicate, invalid, or inconsistent records will be investigated and documented.
+5. Forecasting metrics will be reported honestly without claiming performance that has not been demonstrated.
+6. Confidential business data will not be published without appropriate permission.
+7. Data sources and processing activities will be documented to maintain traceability.
+8. Forecasting limitations will be communicated clearly to prevent users from treating predictions as guaranteed future sales.
+
+**Note:** All initial thresholds in this document are evaluation targets. Actual results will be recorded after implementation and testing.
 If the forecasting approach cannot provide better or otherwise useful results than a simple baseline, it may not provide enough value to justify its additional complexity. However, forecasting accuracy alone is not sufficient. The system must also calculate sales correctly, protect confidential information, and provide explanations that users can verify.
