@@ -1,33 +1,38 @@
 # Week 2: Project Framing and Requirements
-## AI Business Decision Support System
+
+## Business Sales Forecasting System for a Petrol Station
 
 # Section 0 — Project Framing and Application Scope
 
 ## 0.1 Project Name
 
-**AI Business Decision Support System — Sales Analysis and Revenue Forecasting**
+**Business Sales Forecasting System for a Petrol Station**
 
 ## 0.2 Problem Statement
 
-Businesses collect sales records but may find it challenging to turn the data into useful information for business planning. A petrol station has different sales segments, including Mogas, Diesel, and Kedai Mesra PETRONAS. Understanding the performance of each segment requires accurate calculations, comparisons, and interpretation of historical sales patterns.
+Petrol stations manage different sales categories, such as Mogas, Diesel, and Kedai Mesra PETRONAS. Historical sales records contain useful information about sales performance, but analysing these records manually can make it difficult to identify trends and estimate future sales.
 
-This project aims to develop an AI-powered decision support system that analyses historical sales data, presents key business indicators, forecasts future sales revenue where the available data supports it, and explains the findings in simple language.
+Without a systematic approach to analysing historical sales data, business users may find it challenging to understand monthly sales patterns and prepare for future business needs.
+
+This project aims to develop a sales forecasting system that analyses historical sales records, identifies sales trends, predicts future monthly sales revenue, and presents forecasting results through clear visualisations.
 
 ## 0.3 Evidence of the Problem
 
 **Evidence 1: Microsoft Power BI**
 
-Microsoft Power BI provides business intelligence tools for data visualisation, reporting, and monitoring key performance indicators. This demonstrates the practical use of dashboards to help users understand business data.
+Microsoft Power BI provides business intelligence tools for analysing data, creating visualisations, and monitoring key performance indicators.
 
 Source: https://www.microsoft.com/en-us/power-platform/products/power-bi
 
 **Evidence 2: Microsoft Excel**
 
-Microsoft Excel provides spreadsheet functions for calculations, data organisation, and chart creation. Users can use these features to analyse sales records, although the analysis and interpretation still depend on how the spreadsheet is prepared and used.
+Microsoft Excel provides spreadsheet functions for organising sales records, performing calculations, and creating charts.
 
 Source: https://www.microsoft.com/en-us/microsoft-365/excel
 
-These sources demonstrate existing approaches to business analysis. They do not independently confirm the specific difficulties experienced by the selected petrol station. The current reporting process and business needs should be confirmed when the available data is examined.
+These tools demonstrate existing approaches to business data analysis. However, the effectiveness of sales analysis and forecasting depends on the quality of the available data and the methods used.
+
+The project will focus on preparing historical sales records and applying suitable forecasting methods to estimate future monthly sales.
 
 ## 0.4 Existing Approaches
 
@@ -38,7 +43,7 @@ These sources demonstrate existing approaches to business analysis. They do not 
 
 Power BI supports interactive dashboards, data visualisation, and business reporting.
 
-**Potential gap for this project:** The proposed system will focus on the specific sales segments of Mogas, Diesel, and Kedai Mesra PETRONAS and combine their analysis with revenue forecasting and evidence-based explanations.
+**Potential gap for this project:** A dashboard can display historical sales information, but forecasting future sales requires an appropriate forecasting method and evaluation process.
 
 ### 2. Spreadsheet-Based Analysis
 
@@ -47,88 +52,107 @@ Power BI supports interactive dashboards, data visualisation, and business repor
 
 Excel supports data organisation, calculations, comparisons, and charts.
 
-**Potential gap for this project:** Repeated analysis may require users to prepare calculations and interpret the results manually. The proposed system aims to provide a more consistent workflow for sales analysis and interpretation.
+**Potential gap for this project:** Repeated sales analysis and forecasting may require users to prepare calculations and perform additional analysis manually.
 
 ### 3. Time-Series Forecasting
 
-**Example:** Statistical forecasting methods, including exponential smoothing.  
-**Source:** *Forecasting: Principles and Practice*  
-https://otexts.com/fpp3/
+**Example:** Statistical forecasting methods  
+**Source:** https://otexts.com/fpp3/
 
-Time-series forecasting methods use historical observations to estimate future values and evaluate forecasting errors.
+Time-series forecasting methods use historical observations to estimate future values. Their performance can be evaluated by comparing predicted values against actual historical values.
 
-**Potential gap for this project:** Forecasting alone does not provide a complete decision support workflow. This project combines forecasting with historical sales analysis, visualisation, and plain-language explanations.
+**Potential gap for this project:** Forecasting methods need to be selected, tested, and evaluated based on the available petrol station sales data.
 
 ## 0.5 Engineering Gap
 
-Existing tools already support business reporting, spreadsheet analysis, and forecasting. This project focuses on integrating these capabilities into one workflow tailored to the available petrol station sales records.
+Existing tools support sales reporting, spreadsheet calculations, data visualisation, and forecasting.
 
-The system will help users review sales performance across the three business segments, identify trends, assess future revenue estimates, and understand the results through explanations based on calculated evidence.
+However, this project focuses on developing a specific workflow that prepares historical petrol station sales data, analyses monthly sales patterns, develops forecasting models, and presents the results in an understandable format.
 
-The exact engineering gap will be refined after the available dataset and current business reporting process have been examined. The project does not claim that these existing tools cannot perform similar functions.
+The system will focus on forecasting sales revenue using available historical records from Mogas, Diesel, and Kedai Mesra PETRONAS, depending on the availability and suitability of the data.
+
+The forecasting approach will be evaluated against a simple baseline to determine whether it provides useful predictions.
 
 ## 0.6 Project Objectives
 
-- **O1:** To analyse historical sales records and identify sales trends and key business indicators for Mogas, Diesel, and Kedai Mesra PETRONAS.
-- **O2:** To develop and evaluate a sales revenue forecasting approach using historical data and compare its performance against a simple baseline.
-- **O3:** To develop a dashboard with clear, evidence-based explanations that help users understand sales performance and support business planning.
+- **O1:** To analyse historical sales records and identify monthly sales trends and patterns.
+- **O2:** To develop and evaluate machine learning-based forecasting models for predicting future monthly sales revenue.
+- **O3:** To develop a system that presents historical sales analysis and forecasting results through clear visualisations.
 
 ## 0.7 Application Scope
 
 ### Intended Users
 
-The intended users are the owner, manager, or authorised staff of the selected PETRONAS petrol station in Taman Yayasan, Segamat, Johor.
+The intended users are petrol station owners, managers, or authorised staff who need to review historical sales performance and estimated future sales.
 
 ### Supported Tasks
 
 The system is intended to support the following tasks:
 
-1. Import and validate available historical sales records.
-2. Calculate sales totals and key business indicators.
-3. Compare sales performance across Mogas, Diesel, and Kedai Mesra PETRONAS.
-4. Display sales trends using charts and summaries.
-5. Forecast future sales revenue when sufficient suitable historical data is available.
-6. Compare forecasting performance against a simple baseline.
-7. Explain sales trends and forecasting results using available evidence.
+1. Import available historical sales records from supported file formats.
+2. Inspect and prepare historical sales data for analysis.
+3. Analyse sales performance across available sales categories, such as Mogas, Diesel, and Kedai Mesra PETRONAS.
+4. Calculate and display historical sales totals and monthly trends.
+5. Aggregate suitable historical sales records into monthly data.
+6. Develop forecasting models to estimate future monthly sales revenue.
+7. Evaluate forecasting performance using suitable evaluation metrics and a simple baseline.
+8. Present historical sales trends and forecasting results through charts and summaries.
 
 ### Information and Knowledge Domain
 
-The system focuses on historical sales information, sales performance indicators, time-based sales trends, revenue forecasting, and business planning.
+The project focuses on:
+
+- Historical petrol station sales records.
+- Sales categories and quantities, where available.
+- Sales revenue in Malaysian Ringgit (RM).
+- Monthly sales trends and patterns.
+- Time-series forecasting.
+- Forecasting evaluation and performance.
 
 ### Operating Context
 
-The system is intended to operate as a decision support application for authorised users reviewing historical sales data. The initial version will use available records supplied with appropriate permission. The data format, update frequency, and level of detail are to be confirmed.
+The initial system will use historical sales records provided with appropriate permission.
+
+The available dataset may contain separate records for fuel sales and Kedai Mesra sales. These datasets will be inspected and prepared according to their actual structures before analysis.
+
+Monthly aggregation will be performed where the available dates and sales values support it.
 
 ### Important Constraints
 
-- The completeness and quality of historical sales records may limit the analysis.
-- Forecasting depends on the amount and consistency of historical data.
+- The completeness and quality of historical sales records may affect the analysis.
+- Forecasting performance depends on the amount, consistency, and time coverage of historical data.
+- Separate sales categories may require separate preparation and forecasting processes.
 - Revenue does not represent profit unless reliable cost and expense information is available.
+- Forecasting results are estimates and may not reflect unexpected changes in business conditions.
+- The system does not guarantee accurate future predictions.
 - Confidential business information must be protected.
-- Forecasts are estimates and may not reflect unexpected changes in business conditions.
-- The system provides decision support and does not guarantee successful business decisions.
+- The system is intended for analysis and forecasting, not automatic business decision-making.
 
 ### Out-of-Scope Tasks
 
 - Automatically changing fuel prices or business operations.
 - Replacing existing accounting or point-of-sale systems.
 - Predicting future sales with guaranteed accuracy.
-- Calculating profit without reliable cost and expense data.
-- Making business decisions without human review.
+- Calculating business profit without reliable cost and expense data.
+- Automatically purchasing or managing stock.
 - Integrating live sales systems unless access and project requirements justify it.
+- Generating chatbot-based business explanations or recommendations.
 
 ## 0.8 Evaluation Focus
 
 The evaluation will determine whether the system:
 
-1. Calculates sales indicators correctly.
-2. Handles invalid or incomplete sales records appropriately.
-3. Produces useful revenue forecasts compared with a simple baseline.
-4. Generates explanations supported by calculated results and available evidence.
-5. Protects confidential business information.
-6. Responds within a practical time for common analysis tasks.
+1. Analyses historical sales records and calculates sales information correctly.
+2. Identifies and handles predefined data-quality issues.
+3. Aggregates suitable sales records into monthly observations.
+4. Produces monthly sales forecasts using suitable forecasting methods.
+5. Evaluates forecasting performance using MAE, RMSE, and MAPE where applicable.
+6. Compares forecasting performance against a simple baseline.
+7. Presents historical sales analysis and forecasting results clearly.
+8. Protects confidential sales information and maintains data provenance.
+9. Communicates forecasting limitations appropriately.
 
-The dataset must be inspected before finalising the forecasting approach and confirming the suitability of the proposed thresholds.
+The dataset must be inspected before finalising the forecasting methods, evaluation period, and performance thresholds.
 
 ---
 
@@ -138,51 +162,56 @@ Functional requirements describe what the system must do. Each requirement must 
 
 | ID | Functional Requirement | Measurement Method | Metric | Initial Threshold |
 |---|---|---|---|---|
-| FR1 | The system shall import supported historical sales records containing the available sales dates, business segments, and sales values. | Test importing valid sample files and check whether records are loaded correctly. | Successful valid-file import rate | 100% of predefined valid-file test cases |
-| FR2 | The system shall identify and report predefined data-quality issues, including missing dates, invalid sales values, duplicate records, and inconsistent formats where applicable. | Test records containing known data-quality issues and compare the results with expected validation outcomes. | Correct validation and handling rate | 100% of predefined data-quality test cases |
-| FR3 | The system shall calculate sales totals and selected business indicators for Mogas, Diesel, and Kedai Mesra PETRONAS using the available records. | Compare the system's calculations against independently calculated expected values. | Calculation correctness rate | 100% of predefined valid-data calculation tests, allowing documented rounding differences |
-| FR4 | The system shall generate future sales revenue forecasts when the available historical data is suitable for forecasting. | Evaluate forecasts against a held-out historical period and compare them with a simple baseline. | MAE and percentage improvement over baseline MAE | Target at least 5% lower MAE than the baseline, where meaningful and feasible |
-| FR5 | The system shall provide plain-language explanations of sales trends and forecasting results based on available calculated values and evidence. | Check generated factual claims against the underlying calculations and sales records. | Evidence-supported factual claim rate | At least 95%; important numerical claims must match the underlying calculations |
+| FR1 | The system shall analyse historical sales records and identify sales trends and patterns using available dates, sales categories, quantities, and sales values. | Compare system-generated sales totals and selected indicators against independently calculated expected values. | Calculation correctness rate | 100% of predefined valid-data calculation test cases, allowing documented rounding differences. |
+| FR2 | The system shall generate monthly sales revenue forecasts using suitable forecasting methods and available historical sales data. | Evaluate predictions against a held-out historical period and compare model performance against a simple baseline. | MAE, RMSE, and MAPE where applicable | Target at least 5% lower MAE than the baseline, where meaningful and feasible. |
+| FR3 | The system shall present historical sales analysis and forecasting results through clear charts, tables, and summaries. | Test whether the system displays the correct historical values, forecast values, time periods, and sales categories. | Correct result presentation rate | 100% of predefined result-presentation test cases. |
 
 **Notes:**
 
-- The forecasting target is an initial goal, not a guarantee. If the data is insufficient or the forecasting approach does not outperform the baseline, the result and limitation must be reported honestly.
-- The supported file formats and actual data fields will be confirmed after inspecting the dataset.
+- FR1 focuses on understanding historical sales performance.
+- FR2 focuses on predicting future monthly sales revenue.
+- FR3 focuses on presenting the analysis and forecasting results.
+- Forecasting methods will be selected based on the available dataset and its characteristics.
+- A simple baseline may include the previous month's sales or another suitable naive forecasting method.
+- MAE and RMSE measure forecasting errors. MAPE will only be used when actual values are suitable for percentage-based evaluation, particularly when actual sales values are not zero.
+- The 5% improvement target is an initial evaluation goal, not a guarantee. If the model does not outperform the baseline, the findings and limitations must be reported honestly.
+- The forecasting target may be adjusted after examining the actual data.
 
 ---
 
 # Section 2 — Non-Functional Requirements (NFR)
 
-Non-functional requirements describe how well the system should perform and how it should be maintained or used.
+Non-functional requirements describe the quality and usability of the system.
 
 | ID | Quality Attribute | Requirement | Measurement Method | Metric | Initial Threshold |
 |---|---|---|---|---|---|
-| NFR1 | Performance | The system shall complete common sales summary and analysis queries within an acceptable response time under the documented test environment. | Measure response times across a representative set of test queries. | 95th-percentile response time (P95) | At most 3 seconds for common summary and analysis queries, excluding long-running forecasting jobs |
-| NFR2 | Reliability | The system shall handle predefined invalid inputs and recoverable processing errors without an unhandled application crash. | Execute valid and invalid input tests and monitor application errors. | Test cases completed without an unhandled crash | 100% of predefined reliability test cases |
-| NFR3 | Maintainability | The system shall allow sales analysis, forecasting, and explanation components to be tested and updated independently where their interfaces permit. | Review the component structure and perform a controlled component update. | Number of unrelated components requiring changes during the test | No unrelated component changes required for a routine isolated update |
-| NFR4 | Usability | The system shall present key sales indicators, charts, and explanations in a form that intended users can understand. | Ask representative users to complete predefined tasks and provide feedback. | Task completion rate | At least 80% of test tasks completed successfully by participating users |
+| NFR1 | Forecast Accuracy | The system shall produce forecasting results with measurable errors and evaluate performance against a simple baseline. | Evaluate model predictions using a held-out historical period. | MAE, RMSE, and MAPE where applicable. | Report all applicable metrics and baseline comparisons. Aim for at least 5% lower MAE than the baseline where meaningful and feasible. |
+| NFR2 | Data Quality | The system shall identify predefined data-quality issues before using historical sales records for analysis and forecasting. | Test datasets containing missing dates, invalid sales values, duplicate records, and inconsistent formats where applicable. | Data validation correctness rate. | 100% of predefined data-quality test cases handled according to documented rules. |
+| NFR3 | Usability | The system shall present historical sales analysis and forecasting results in a clear and understandable interface. | Conduct predefined usability tasks and collect feedback from representative users. | Task completion rate. | At least 80% of predefined tasks completed successfully by participating users. |
 
-The proposed thresholds will be reviewed during implementation and testing. Usability results will depend on the number and characteristics of participating users.
+The proposed thresholds are initial targets and may be reviewed during implementation and testing.
+
+Forecast accuracy will depend on the available historical data, forecasting method, and evaluation period.
 
 ---
 
 # Section 3 — Responsible AI Requirements (RAI)
 
-Responsible AI requirements define controls to reduce risks involving confidential data, unsupported explanations, and misleading forecasts.
+Responsible AI requirements define practices to protect business information, maintain data traceability, and avoid misleading forecasting results.
 
-| ID | Responsible AI Risk | Requirement | Measurement Method | Metric | Initial Threshold |
+| ID | Responsible AI Focus | Requirement | Measurement Method | Metric | Initial Threshold |
 |---|---|---|---|---|---|
-| RAI1 | Privacy and confidentiality | The system shall restrict access to confidential sales records to authorised users and shall not expose the records to unauthorised users or destinations. | Test access restrictions and inspect relevant data flows and outputs. | Access-control test pass rate; number of unauthorised disclosures observed | 100% of predefined access-control tests pass; zero unauthorised disclosures observed in testing |
-| RAI2 | Unsupported AI-generated claims | The system shall base factual explanations on available calculated results and supporting sales evidence, and shall communicate when sufficient evidence is unavailable. | Review a test set of generated explanations and verify their factual claims against the underlying records. | Evidence-supported factual claim rate | At least 95% of factual claims are supported; important numerical claims must be correct |
-| RAI3 | Misleading forecasts and automation risk | The system shall identify forecasts as estimates, communicate relevant limitations, and leave final business decisions to human users. | Test forecast displays and explanations, including cases with insufficient data or poor forecasting performance. | Correct forecast-label and limitation-disclosure rate; number of unauthorised automated business actions | 100% of predefined forecast-transparency tests pass; zero automated business actions |
+| RAI1 | Data Privacy | The system shall protect confidential sales records and ensure that data is only accessed or used for authorised project purposes. | Review data storage, repository contents, access permissions, and data-sharing practices. | Privacy and access-control checklist pass rate. | All defined privacy safeguards must be implemented and verified before confidential data is shared or deployed. |
+| RAI2 | Data Provenance | The system shall maintain information about the source of historical sales data and the processing steps used to prepare forecasting datasets. | Inspect data manifests, source information, processing records, and dataset versions. | Provenance documentation completeness rate. | 100% of required provenance fields documented for the datasets used in the final evaluation. |
+| RAI3 | Forecasting Transparency | The system shall communicate that forecasting results are estimates and identify relevant limitations, including insufficient historical data and forecasting errors. | Review forecast displays, labels, evaluation results, and documented limitations. | Forecast transparency checklist pass rate. | All predefined forecast-transparency checks must pass. |
 
 ## Reflection: Most Difficult Responsible AI Requirement
 
-RAI2, which focuses on ensuring that AI-generated explanations are supported by evidence, may be the most difficult requirement to measure and enforce technically.
+RAI3, which focuses on communicating forecasting limitations, may be challenging because forecasting models can produce numerical predictions that appear reliable even when the available historical data is limited.
 
-An explanation may sound reasonable while still making a claim that is not supported by the sales records. To evaluate this requirement, factual claims must be compared with the actual calculations and available evidence. Some business trends may also have several possible explanations, and the sales data alone may not establish the cause.
+For example, unexpected changes in fuel demand, business conditions, or customer behaviour may cause actual sales to differ from predicted values.
 
-The system should therefore distinguish observed patterns from possible interpretations and avoid claiming that a particular factor caused a sales change unless sufficient evidence supports that conclusion.
+The system should therefore present forecasts as estimates rather than guaranteed future sales. Forecasting errors and relevant limitations should also be reported so that users can interpret the results appropriately.
 
 ---
 
@@ -190,9 +219,13 @@ The system should therefore distinguish observed patterns from possible interpre
 
 Before implementation, the following checks should be completed:
 
-- Confirm that all three project objectives are supported by relevant requirements.
-- Inspect the available dataset and confirm its structure and quality.
-- Confirm that each requirement has a measurable test method and initial threshold.
+- Confirm that all three project objectives are supported by the functional requirements.
+- Ensure FR1 focuses on historical sales analysis, FR2 on monthly sales forecasting, and FR3 on presenting results.
+- Inspect the available dataset and confirm its actual structure, fields, and time coverage.
+- Confirm that each requirement has a measurable testing method and suitable evaluation criteria.
 - Ensure the evaluation criteria use the same requirement IDs as this document.
-- Review confidentiality, evidence-grounding, and forecast-transparency controls.
+- Verify that confidential business data is handled with appropriate permission and protection.
+- Maintain data provenance through source records, processing information, and dataset manifests.
+- Communicate forecasting errors, uncertainty, and limitations clearly.
+- Review the requirements if the available dataset or implementation constraints make an initial target unsuitable.
 - Refine the requirements if the available data or implementation constraints make a target unsuitable.
