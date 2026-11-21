@@ -1,0 +1,38 @@
+{
+    "project": "Business Sales Forecasting System",
+    "stage": "Week 3 - Part B Data Preparation",
+    "source_file": "petrol_station_data(1).xlsx",
+    "prepared_files": [
+        {
+            "file": "prepared_fuel_sales.csv",
+            "rows": 69,
+            "columns": 7,
+            "missing_amount_values": 3
+        },
+        {
+            "file": "prepared_kedai_mesra_sales.csv",
+            "rows": 24,
+            "columns": 11,
+            "missing_total_sales_values": 0
+        },
+        {
+            "file": "monthly_fuel_sales.csv",
+            "rows": 23,
+            "columns": 2,
+            "missing_sales_values": 1
+        },
+        {
+            "file": "monthly_kedai_mesra_sales.csv",
+            "rows": 24,
+            "columns": 2,
+            "missing_sales_values": 0
+        }
+    ],
+    "created_at_utc": "2026-11-20T18:22:46.457543+00:00",
+    "notes": [
+        "Fuel and Kedai Mesra datasets are kept separate.",
+        "Missing values are preserved and not replaced with zero.",
+        "May 2025 fuel records are unavailable in the source dataset.",
+        "May 2025 Kedai Mesra sales may represent a partial reporting period."
+    ]
+}
